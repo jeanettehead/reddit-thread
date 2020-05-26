@@ -27,6 +27,14 @@ test('recognizes an error', () => {
   expect(getByText(/Error/i)).toBeInTheDocument();
 });
 
+test('renders loading state', () => {
+  fetchHelper.mockReturnValue(null);
+
+  const { getByText } = render(<App dataUrl={dataUrl} />);
+
+  expect(getByText(/Loading/i)).toBeInTheDocument();
+});
+
 test('renders a thread', () => {
   const { getByText } = render(<App dataUrl={dataUrl} />);
 
