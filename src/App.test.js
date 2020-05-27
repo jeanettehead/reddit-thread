@@ -10,7 +10,7 @@ const dataUrl = "somewhere";
 let successfulPromise;
 
 beforeEach(() => { 
-  successfulPromise = Promise.resolve({title: "Thread Title", comments: []});
+  successfulPromise = Promise.resolve({title: "Thread Title", selftext: "", comments: []});
   fetchHelper.mockReset();
   fetchHelper.mockReturnValue(successfulPromise);
 })
@@ -41,7 +41,7 @@ test('renders loading state', async () => {
   fetchHelper.mockReturnValue(hackedLoadingStatePromise);
   let getByText;
 
-  act(async () => {
+  await act(async () => {
     getByText = render(<App dataUrl={dataUrl} />).getByText;
     await hackedLoadingStatePromise;
   })

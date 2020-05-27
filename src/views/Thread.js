@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import Comment, {CommentType} from "./Comment";
+import ParagraphView from './ParagraphView';
+import Score from './Score';
 
 export default function Thread(props) {
     const {
@@ -12,17 +14,26 @@ export default function Thread(props) {
 
     } = props;
 
+
     return (
-        <div>
-            <div>{subredditName}</div>
-            <div>{score}</div>
-            <div>{title}</div>
-            <div>{selfText}</div>
-            {
-                comments.map((comment) =>
-                    <Comment {...comment} key={comment.id} />
-                )
-            }
+        <div className="Thread">
+            <div className="Thread__subreddit">{subredditName}</div>
+            <div className="Thread__header">
+                <Score className="Thread__score" score={score}/>
+                <div className="Thread__title">{title}</div>
+                <div/>
+            </div>
+            <div className="Thread__content">
+                <div className="Thread__text">
+                    <ParagraphView className="Thread__textParagraph" paragraph={selfText} />
+                    <div className="Thread__commentCount">{`${comments.length} Comments`}</div>
+                </div>
+                {
+                    comments.map((comment) =>
+                        <Comment {...comment} key={comment.id} />
+                    )
+                }
+            </div>
         </div>
     );
 }

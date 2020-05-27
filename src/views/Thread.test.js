@@ -11,7 +11,6 @@ const data = {
 }
 
 test('renders a thread', () => {
-
     const { getByText } = render(<Thread {...data} />);
 
     expect(getByText(/dark chocolate/i)).toBeInTheDocument();
