@@ -5,22 +5,25 @@ import Thread from "./views/Thread"
 import PropTypes from "prop-types";
 
 function App(props) {
+  const [dataPromise, setDataPromise] = useState(null);
   const [threadData, setThreadData] = useState(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    try {
-      setThreadData(fetchHelper(props.dataUrl))
-    } catch {
-      setError(true)
-    }
-  }, []);
+      setDataPromise(fetchHelper(props.dataUrl))
+  }, [props.dataUrl]);
 
-  if (error) {
+  if (error != null) {
     return "Error";
   }
 
-  const content = threadData == null ? "Loading" : <Thread title={threadData.title} />
+  if (dataPromise != null) {
+    dataPromise
+      .then(setThreadData)
+      .catch(setError)
+  }
+
+  const content = threadData == null ? "Loading" : <Thread {...threadData} />
 
   return (
     <div className="App">
