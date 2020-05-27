@@ -10,7 +10,7 @@ const dataUrl = "somewhere";
 let successfulPromise;
 
 beforeEach(() => { 
-  successfulPromise = Promise.resolve({title: "Thread Title"});
+  successfulPromise = Promise.resolve({title: "Thread Title", comments: []});
   fetchHelper.mockReset();
   fetchHelper.mockReturnValue(successfulPromise);
 })

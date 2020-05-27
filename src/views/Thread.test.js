@@ -7,19 +7,11 @@ const data = {
     selftext: "is delicious",
     score: 5,
     title: "dark chocolate",
-    comments: [{
-        author: "Buffy Summers"
-    }]
+    comments: []
 }
 
 test('renders a thread', () => {
 
-    const { getByText } = render(<Thread {...data} />);
-
-    expect(getByText(/dark chocolate/i)).toBeInTheDocument();
-})
-
-test('renders comments', () => {
     const { getByText } = render(<Thread {...data} />);
 
     expect(getByText(/dark chocolate/i)).toBeInTheDocument();
