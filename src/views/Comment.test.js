@@ -6,7 +6,7 @@ const data = {
     author: "Buffy Summers",
     ups: 5,
     downs: 3,
-    body_html: "hi",
+    body: "hi",
     depth: 0,
     created_utc: 0
 }

@@ -61,3 +61,17 @@
 .Thread__textParagraph:last-child {
   margin-bottom: 0;
 }
+
+.Comment {
+  margin: 20px 40px;
+}
+
+.Comment__title {
+  display: flex;
+  align-items: center;
+}
+
+.Comment__score {
+  display: flex;
+  margin: 5px;
+}
