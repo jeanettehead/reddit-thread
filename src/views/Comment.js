@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import moment from 'moment';
 import Score from "./Score";
 import ParagraphView from './ParagraphView';
 
@@ -19,7 +20,7 @@ export default function Comment(props) {
             <div className="Comment__title">
                 <div>{author}</div>
                 <div className="Comment__score"> <Score score={score} /> &nbsp;points </div>
-                <div>{createdUtc}</div>
+                <div>{moment.utc(createdUtc*1000).fromNow()}</div>
             </div>
             <ParagraphView paragraph={body} />
         </div>
