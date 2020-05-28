@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Comment, {CommentType} from "./Comment";
 import ParagraphView from './ParagraphView';
 import Score from './Score';
+import nestComments from '../helpers/nestComments';
 
 export default function Thread(props) {
     const {
@@ -14,6 +15,7 @@ export default function Thread(props) {
 
     } = props;
 
+    const nestedComments = nestComments(comments);
 
     return (
         <div className="Thread">
@@ -29,7 +31,7 @@ export default function Thread(props) {
                     <div className="Thread__commentCount">{`${comments.length} Comments`}</div>
                 </div>
                 {
-                    comments.map((comment) =>
+                    nestedComments.map((comment) =>
                         <Comment {...comment} key={comment.id} />
                     )
                 }

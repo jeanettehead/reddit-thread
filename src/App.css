@@ -75,3 +75,12 @@
   display: flex;
   margin: 5px;
 }
+
+.Comment__textParagraph {
+  margin: 10px 0;
+}
+
+.Comment__comments {
+  margin-left: 20px;
+  border-left: 1px solid #000;
+}

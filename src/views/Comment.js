@@ -10,7 +10,8 @@ export default function Comment(props) {
         ups,
         downs,
         created_utc: createdUtc,
-        body
+        body,
+        comments
     } = props;
 
     const score = ups - downs;
@@ -22,7 +23,14 @@ export default function Comment(props) {
                 <div className="Comment__score"> <Score score={score} /> &nbsp;points </div>
                 <div>{moment.utc(createdUtc*1000).fromNow()}</div>
             </div>
-            <ParagraphView paragraph={body} />
+            <ParagraphView className="Comment__textParagraph" paragraph={body} />
+            <div className="Comment__comments">
+                {
+                    comments.map((comment) => 
+                        <Comment {...comment} key={comment.id}/>
+                    )
+                }
+            </div>
         </div>
     )
 }
@@ -36,4 +44,4 @@ export const CommentType = {
     created_utc: PropTypes.number.isRequired
 };
 
-Comment.propTypes = CommentType;
+Comment.propTypes = {...CommentType, comments: PropTypes.arrayOf(PropTypes.shape(CommentType))};

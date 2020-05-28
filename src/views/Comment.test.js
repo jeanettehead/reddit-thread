@@ -8,7 +8,8 @@ const data = {
     downs: 3,
     body: "hi",
     depth: 0,
-    created_utc: 0
+    created_utc: 0,
+    comments: []
 }
 
 test('computes score as ups - downs', () => {
