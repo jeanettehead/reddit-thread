@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import moment from 'moment';
 import Score from "./Score";
 import ParagraphView from './ParagraphView';
+import {Delete} from '@material-ui/icons';
 
 export default function Comment(props) {
     const {
@@ -24,6 +25,7 @@ export default function Comment(props) {
                 <div>{moment.utc(createdUtc*1000).fromNow()}</div>
             </div>
             <ParagraphView className="Comment__textParagraph" paragraph={body} />
+            <button aria-label="Delete"><Delete/></button>
             <div className="Comment__comments">
                 {
                     comments.map((comment) => 
