@@ -21,7 +21,7 @@ export default function Comment(props) {
         <div className="Comment">
             <div className="Comment__title">
                 <div>{author}</div>
-                <div className="Comment__score"> <Score score={score} /> &nbsp;points </div>
+                <div className="Comment__score"> <Score score={score} /> &nbsp;{`point${score == 1 ? "" : "s"}`} </div>
                 <div>{moment.utc(createdUtc*1000).fromNow()}</div>
             </div>
             <div className = "Comment__body">
