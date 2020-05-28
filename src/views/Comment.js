@@ -24,8 +24,14 @@ export default function Comment(props) {
                 <div className="Comment__score"> <Score score={score} /> &nbsp;points </div>
                 <div>{moment.utc(createdUtc*1000).fromNow()}</div>
             </div>
-            <ParagraphView className="Comment__textParagraph" paragraph={body} />
-            <button aria-label="Delete"><Delete/></button>
+            <div className = "Comment__body">
+                <div className="Comment__text">
+                    <ParagraphView className="Comment__textParagraph" paragraph={body} />
+                </div>
+                <div>
+                    <button className="Comment__delete" aria-label="Delete"><Delete /></button>
+                </div>
+            </div>
             <div className="Comment__comments">
                 {
                     comments.map((comment) => 
