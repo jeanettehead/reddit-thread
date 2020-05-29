@@ -13,21 +13,23 @@ function App(props) {
       setDataPromise(fetchHelper(props.dataUrl))
   }, [props.dataUrl]);
 
-  if (error != null) {
+  if (error !== null) {
     return "Error";
   }
 
-  if (dataPromise != null) {
+  if (dataPromise !== null) {
     dataPromise
       .then(setThreadData)
       .catch(setError)
   }
 
-  const content = threadData == null ? "Loading" : <Thread {...threadData} />
+  if(threadData === null ) {
+    return "Loading"
+  }
 
   return (
     <div className="App">
-      {content}
+      <Thread {...threadData}/>
     </div>
   );
 }

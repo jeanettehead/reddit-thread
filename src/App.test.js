@@ -10,7 +10,7 @@ const dataUrl = "somewhere";
 let successfulPromise;
 
 beforeEach(() => { 
-  successfulPromise = Promise.resolve({title: "Thread Title", selftext: "", comments: []});
+  successfulPromise = Promise.resolve({title: "Thread Title", selftext: "", score: 12, selftext: "hi", subreddit_name_prefixed: "r/ah", comments: []});
   fetchHelper.mockReset();
   fetchHelper.mockReturnValue(successfulPromise);
 })

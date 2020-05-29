@@ -7,10 +7,10 @@ export default function Score(props) {
     if (props.score > 1000) {
         const thousands = parseInt(props.score.toString().slice(0, -3), 10);
         const hundreds = parseInt(props.score.toString().slice(-3), 10);
-        displayScore = `${thousands}.${Math.round(hundreds / 100)}k`
+        displayScore = `${thousands}.${Math.round(hundreds / 100)}k`;
     }
 
-    return  <div className={props.className} data-testid="score">{displayScore}</div>;
+    return <div className={props.className} data-testid="score">{displayScore}</div>;
 }
 
 Score.propTypes = {

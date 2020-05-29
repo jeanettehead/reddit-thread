@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from "prop-types";
 import Comment, {CommentType} from "./Comment";
 import ParagraphView from './ParagraphView';
@@ -15,7 +15,16 @@ export default function Thread(props) {
 
     } = props;
 
-    const nestedComments = nestComments(comments);
+    const [linearComments, setLinearComments] = useState(comments);
+
+    const deleteComment = (commentId) => {
+        setLinearComments(linearComments.map((comment) => {
+            if (comment.id === commentId) {
+                return {...comment, body: "[deleted]", author: "[deleted]"};
+            }
+            return comment;
+        }))
+    }
 
     return (
         <div className="Thread">
@@ -31,14 +40,15 @@ export default function Thread(props) {
                     <div className="Thread__commentCount">{`${comments.length} Comments`}</div>
                 </div>
                 {
-                    nestedComments.map((comment) =>
-                        <Comment {...comment} key={comment.id} />
+                    nestComments(linearComments).map((comment) =>
+                        <Comment {...comment} onDelete={deleteComment} key={comment.id} />
                     )
                 }
             </div>
         </div>
     );
 }
+
 
 Thread.propTypes = {
     subreddit_name_prefixed: PropTypes.string.isRequired,
