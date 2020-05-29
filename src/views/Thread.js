@@ -31,7 +31,7 @@ export default function Thread(props) {
             <div className="Thread__subreddit">{subredditName}</div>
             <div className="Thread__header">
                 <Score className="Thread__score" score={score}/>
-                <div className="Thread__title">{title}</div>
+                <h1 className="Thread__title">{title}</h1>
                 <div/>
             </div>
             <div className="Thread__content">
